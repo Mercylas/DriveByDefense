@@ -152,8 +152,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.cpp" />
-    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -161,18 +159,20 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ShopBox.cpp" />
+    <ClCompile Include="ShopKeeper.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.hpp" />
-    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.hpp" />
     <ClInclude Include="Controller.hpp" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Model.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="ShopBox.hpp" />
+    <ClInclude Include="ShopKeeper.hpp" />
     <ClInclude Include="StaticTiledMap.h" />
     <ClInclude Include="TileLoader.h" />
     <ClInclude Include="Tower.hpp" />

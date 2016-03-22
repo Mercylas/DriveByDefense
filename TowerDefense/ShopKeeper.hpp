@@ -8,7 +8,7 @@ class ShopKeeper : public sf::Drawable, public sf::Transformable
 
 public:
 	ShopKeeper();
-	ShopKeeper(int which, int xx, int yy,int dir);
+	ShopKeeper(int which, int xx, int yy, int dir);
 	~ShopKeeper();
 	void setTextSheet(sf::Texture *textSheet);
 	void movePlayer(int xx, int yy);

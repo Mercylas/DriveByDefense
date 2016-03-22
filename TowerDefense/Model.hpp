@@ -17,6 +17,7 @@ public:
 	int whoTalking;
 	int enterTower(int direc);
 	void addTower(int which, int xx, int yy);
+	void addTower(int which);
 	void addShopKeeper(int which, int xx, int yy, int dir);
 	void addEnemy(int which);
 	void exitTower();

@@ -42,10 +42,10 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.cpp">
+    <ClCompile Include="ShopKeeper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.cpp">
+    <ClCompile Include="ShopBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,10 +80,10 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.hpp">
+    <ClInclude Include="ShopKeeper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.hpp">
+    <ClInclude Include="ShopBox.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

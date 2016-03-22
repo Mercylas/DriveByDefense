@@ -14,6 +14,7 @@ public:
 	void setNewTowerTexture();
 	void setText(int who);
 	sf::Text sell;
+	sf::Text gold;
 	sf::Font fonterino;
 	Model* model;
 	ShopBox dialogueBox;

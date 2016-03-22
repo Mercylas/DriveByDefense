@@ -3,7 +3,7 @@
 ShopKeeper::ShopKeeper() {
 }
 
-ShopKeeper::ShopKeeper(int which, int xx, int yy,int dir) {		//7,10
+ShopKeeper::ShopKeeper(int which, int xx, int yy, int dir) {		//7,10
 	this->direction = dir;
 	if (which == 7) {
 		this->shopMenu = "\t\t\t\t\t\t\tPowerUps\n\t1) Damage+\n\t2) Range+\n\t3) HP+)";
@@ -20,10 +20,10 @@ ShopKeeper::ShopKeeper(int which, int xx, int yy,int dir) {		//7,10
 	quad[2].position = sf::Vector2f(float(xx + 64), float(yy + 64));
 	quad[3].position = sf::Vector2f(float(xx), float(yy + 64));
 
-	quad[0].texCoords = sf::Vector2f(float((which - 1) * 64), float(64*4));
-	quad[1].texCoords = sf::Vector2f(float(which * 64), float(64*4));
-	quad[2].texCoords = sf::Vector2f(float(which * 64), float(64*5));
-	quad[3].texCoords = sf::Vector2f(float((which - 1) * 64), float(64*5));
+	quad[0].texCoords = sf::Vector2f(float((which - 1) * 64), float(64 * 4));
+	quad[1].texCoords = sf::Vector2f(float(which * 64), float(64 * 4));
+	quad[2].texCoords = sf::Vector2f(float(which * 64), float(64 * 5));
+	quad[3].texCoords = sf::Vector2f(float((which - 1) * 64), float(64 * 5));
 }
 ShopKeeper::~ShopKeeper() {
 }

@@ -19,6 +19,11 @@ View::View(Model * m) {
 	this->sell.setColor(sf::Color(0, 0, 0, 255));
 	this->sell.setFont(this->fonterino);
 	this->sell.setString(this->model->shops.at(0).shopMenu);
+	this->gold.setCharacterSize(30);
+	this->gold.setPosition(10, 5);
+	this->gold.setColor(sf::Color(0, 0, 0, 150));
+	this->gold.setFont(this->fonterino);
+	this->gold.setString(this->model->player.inventory.returnGoldAmount());
 }
 
 View::~View() {
@@ -45,6 +50,7 @@ void View::render() {
 		this->window.draw(this->dialogueBox);
 		this->window.draw(this->sell);
 	}
+	this->window.draw(this->gold);
 	this->window.display();
 }
 
@@ -64,7 +70,7 @@ void View::loadShopKeepText()
 }
 
 void View::setNewTowerTexture() {
-	//this->model->towers.at(this->model->towers.size - 1).setTowerText(&this->towersText);
+	this->model->towers.at(this->model->towers.size()-1).setTowerText(&this->towersText);
 }
 
 void View::setText(int who) {

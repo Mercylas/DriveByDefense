@@ -23,11 +23,51 @@ void Controller::inputs() {
 			break;
 			// key pressed
 		case sf::Event::KeyPressed:
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 				this->view->window.close();
 				break;
 			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+				if (this->view->talking) {
+					if (this->model->whoTalking) {
+						//towers
+						this->model->addTower(1);
+						this->view->setNewTowerTexture();
+					}
+					else {
+						//powerups
+						std::cout << "add powerup 1" << std::endl;
+					}
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
+				if (this->view->talking) {
+					if (this->model->whoTalking) {
+						//towers
+						this->model->addTower(2);
+						this->view->setNewTowerTexture();
+					}
+					else {
+						//powerups
+						std::cout << "add powerup 2" << std::endl;
+					}
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
+				if (this->view->talking) {
+					if (this->model->whoTalking) {
+						//towers
+						this->model->addTower(3);
+						this->view->setNewTowerTexture();
+					}
+					else {
+						//powerups
+						std::cout << "add powerup 3" << std::endl;
+					}
+				}
+			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+				this->view->talking = false;
 				if (!model->checkPlayerCollision(0)) {
 					if (this->model->player.driving) {
 						model->mapY += 8;
@@ -41,6 +81,7 @@ void Controller::inputs() {
 				model->player.state = 5;
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+				this->view->talking = false;
 				if (!model->checkPlayerCollision(1)) {
 					if (this->model->player.driving) {
 						model->mapY -= 8;
@@ -54,6 +95,7 @@ void Controller::inputs() {
 				model->player.state = 2;
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+				this->view->talking = false;
 				if (!model->checkPlayerCollision(2)) {
 					if (this->model->player.driving) {
 						model->mapX += 8;
@@ -67,6 +109,7 @@ void Controller::inputs() {
 				model->player.state = 3;
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+				this->view->talking = false;
 				if (!model->checkPlayerCollision(3)) {
 					if (this->model->player.driving) {
 						model->mapX -= 8;
@@ -88,7 +131,6 @@ void Controller::inputs() {
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
 			this->model->addEnemy(1);
-			std::cout << "Enemy Added" << std::endl;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			if (this->ready) {
@@ -96,7 +138,15 @@ void Controller::inputs() {
 					this->model->exitTower();
 				}
 				else {
-					this->model->enterTower(this->model->player.state);
+					int talk = this->model->talking(this->model->player.state);
+					if (talk == -1) {
+						this->model->enterTower(this->model->player.state);
+					}
+					else {
+						this->view->talking = true;
+						this->view->setText(talk);
+						this->model->whoTalking = talk;
+					}
 				}
 				this->ready = false;
 			}
