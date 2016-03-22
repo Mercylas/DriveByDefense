@@ -78,16 +78,17 @@ Model::Model() {
 	this->player.movePlayer(this->winw / 2 - 32,this->winh / 2 - 32);
 	mapX = -640;
 	mapY = -448;
-	addTower(7, 740, 400);
+	//Adding towers for testing
 	addTower(6, 0, 0);
-	addTower(5, 600, 300);
-	addTower(4, 500, 400);
-	addTower(2, 400, 400);
-	addTower(1, 200, 500);
-	addTower(8, 200, 300);
-	addTower(9, 400, 300);
-	addTower(10, 640, 0);
-	addTower(11, 840, 0);
+	addTower(5, 64*1, 0);
+	addTower(4, 64 * 2, 0);
+	addTower(2, 64 * 3, 0);
+	addTower(1, 64 * 4, 0);
+	addTower(8, 64 * 5, 0);
+	addTower(9, 64 * 6, 0);
+	addTower(10, 64 * 7, 0);
+	addTower(11, 64 * 8, 0);
+	//lives
 	lives = 100;
 }
 
@@ -170,6 +171,7 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
+					unpassable[mapX][mapY] = false;
 					return 1;
 				}
 			}
@@ -189,6 +191,7 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
+					unpassable[mapX][mapY] = false;
 					return 1;
 				}
 			}
@@ -209,6 +212,8 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
+					std::cout << mapX << ", " << mapY << std::endl;
+					unpassable[mapX][mapY] = false;
 					return 1;
 				}
 			}
@@ -229,7 +234,9 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
-					return 1;
+					std::cout << mapX << "," << mapY << std::endl;
+					unpassable[mapX][mapY] = false;
+ 					return 1;
 				}
 			}
 		}
@@ -240,15 +247,18 @@ int Model::enterTower(int direc) {
 void Model::addTower(int which, int xx, int yy) {
 	Tower temp(which, xx, yy);
 	this->towers.push_back(temp);
+	std::cout << xx-32 << "," << yy << std::endl;
+	unpassable[-xx-32][yy] = true;
 }
 void Model::addEnemy(int which) {
 	Enemy temp(which);
 	this->enemies.push_back(temp);
-	std::cout << "why" << std::endl;
 }
 
 void Model::exitTower(){
 	this->towers.at(this->player.inThisTower).moving = false;
+	unpassable[mapX][mapY] = true;
+	std::cout << mapX << "," << mapY << std::endl;
 	this->player.driving = false;
 	this->player.inThisTower = -1;
 }
