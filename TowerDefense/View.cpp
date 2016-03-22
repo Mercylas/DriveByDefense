@@ -23,7 +23,6 @@ View::View(Model * m) {
 	this->gold.setPosition(10, 5);
 	this->gold.setColor(sf::Color(0, 0, 0, 150));
 	this->gold.setFont(this->fonterino);
-	this->gold.setString(this->model->player.inventory.returnGoldAmount());
 }
 
 View::~View() {
@@ -33,6 +32,7 @@ void View::render() {
 	this->window.clear(sf::Color::Black);
 	//put stuff here to draw for example, object->renderable()
 	//go through the tiles and only draw the one we need
+	this->gold.setString(this->model->player.inventory.returnGoldAmount());
 	this->window.draw(model->map, model->state);
 	if (this->model->player.driving == false) {
 		this->window.draw(this->model->player);

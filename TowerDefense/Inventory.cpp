@@ -16,8 +16,7 @@ Inventory::~Inventory()
 
 std::string Inventory::returnGoldAmount()
 {
-	std::string goldStr = "Gold: " + this->murse.at(0);
+	std::string goldStr = "Gold: " + std::to_string(*this->gold);
 	std::cout << this->murse.at(0) << std::endl;
-
 	return goldStr;
 }
