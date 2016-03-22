@@ -1,2 +1,4 @@
-﻿  Inventory.cpp
-  TowerDefense.vcxproj -> C:\Comp2501\DriveByDefense\Debug\TowerDefense.exe
+﻿  Model.cpp
+z:\programming'\towerdefensedemo\towerdefense\towerdefense\model.cpp(123): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+z:\programming'\towerdefensedemo\towerdefense\towerdefense\model.cpp(357): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  TowerDefense.vcxproj -> Z:\Programming'\TowerDefenseDemo\TowerDefense\Debug\TowerDefense.exe
