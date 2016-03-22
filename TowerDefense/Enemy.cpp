@@ -6,15 +6,17 @@ Enemy::Enemy(int type)
 {
 	this->frameRate = float(0.6);
 	this->type = type;
-	this->checkpoint = 0;
+	this->checkpoint = -1;//spawns on checkpoint -1
 	switch (type) {
 	case 1:
 		this->texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png"); //32x32
 		this->health = 100;
+		this->speed = 1;
 		break;
 	default:
 		this->texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png"); //32x32
 		this->health = 100;
+		this->speed = 1;
 		break;
 	}
 	addFrame(sf::IntRect(0, 2, 64, 64));
@@ -33,7 +35,7 @@ Enemy::Enemy(int type)
 	addFrame(sf::IntRect(64, 194, 64, 64));
 	addFrame(sf::IntRect(128, 194, 64, 64));
 	//walk up
-	this->state = 1;
+	this->state = 2;
 	this->sequenceIndex = 0;
 	this->frameTime = 0;
 	this->vertices.setPrimitiveType(sf::Quads);
@@ -55,7 +57,6 @@ Enemy::Enemy(int type)
 
 Enemy::~Enemy()
 {
-	this->state = 2;
 }
 
 void Enemy::update(sf::Time delta)
@@ -73,6 +74,62 @@ void Enemy::update(sf::Time delta)
 			this->frameTime = 0;
 		}
 	}
+	switch (checkpoint) {
+		case -1:
+			this->state = 2;
+		break;
+		case 0:
+			//spawns next enemy here on normal wave
+			this->state = 2;
+		break;
+		case 1:
+			this->state = 4;
+		break;
+		case 2:
+			this->state = 3;
+		break;
+		case 3:
+			this->state = 4;
+		break;
+		case 4:
+			this->state = 2;
+		break;
+		case 5:
+			this->state = 1;
+		break;
+		case 6:
+			this->state = 3;
+		break;
+		case 7:
+			this->state = 1;
+		break;
+		case 8:
+			this->state = 2;
+		break;
+		case 9:
+			this->state = 4;
+		break;
+		case 10:
+			this->state = 3;
+		break;
+		case 11:
+			this->state = 4;
+		break;
+		case 12:
+			this->state = 2;
+		break;
+		case 13:
+			this->state = 1;
+		break;
+		case 14:
+			this->state = 2;
+		break;
+		default:
+			//broken
+		break;
+	}
+	//1 = down, 2 = left, 3 = right, 4 = up
+	this->move(this->state);
 }
 
 void Enemy::setTexCord()
@@ -105,4 +162,27 @@ void Enemy::UpdatePos(int mapX, int mapY) {
 	mapX += 3776 - 32;
 	mapY += 896;
 	this->setPosition(this->posX + mapX, this->posY + mapY);
+}
+
+void Enemy::move(int direction) {
+	//0 = down, 1 = left, 2 = right, 3 = up
+	switch (direction) {
+		case 1:
+			this->posY += speed;
+		break;
+		case 2:
+			this->posX -= speed;
+		break;
+		case 3:
+			this->posX += speed;
+		break;
+		case 4:
+			this->posY -= speed;
+		break;
+	}
+}
+
+int Enemy::checkPointUpdate(int update) {
+	this->checkpoint+=update;
+	return checkpoint;
 }

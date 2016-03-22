@@ -21,7 +21,6 @@ void View::render() {
 	}
 	for (unsigned int i = 0; i < this->model->enemies.size(); i++) {
 		this->window.draw(this->model->enemies.at(i));
-		std::cout << i << std::endl;
 	}
 	this->window.display();
 }

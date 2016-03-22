@@ -12,14 +12,16 @@ public:
 	int state; //standing=1, walking down=2, walking left =3, walking right=4, walking up=5
 	void update(sf::Time delta);
 	void setTexCord();
+	void move(int);
 	void addFrame(sf::IntRect rect);
 	bool isDead();
 	void UpdatePos(int mapX, int mapY);
+	int checkPointUpdate(int);
 	Inventory inventory;
 private:
 	float frameTime;
 	float frameRate;
-	int type, checkpoint, health, posX, posY;
+	int type, checkpoint, health, posX, posY, speed;
 	std::vector<sf::IntRect> playerFrames;
 	sf::Texture texSheet;
 	sf::VertexArray vertices;

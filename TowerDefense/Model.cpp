@@ -21,9 +21,9 @@ Model::Model() {
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 06, 33, 33, 06, 33, 33, 06, 47, 36, 73, 33, 33, 33, 33, 33, 06, 40, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 06, 33, 33, 06, 33, 33, 06, 47, 36, 55, 73, 33, 00, 31, 31, 07, 40, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 06, 33, 33, 06, 33, 33, 06, 47, 36, 36, 39, 33, 06, 48, 50, 50, 61, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
-		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 06, 33, 33, 06, 33, 33, 06, 47, 36, 36, 39, 33, 06, 67, 51, 51, 51, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
-		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 05, 31, 07, 33, 33, 06, 33, 33, 06, 45, 42, 42, 46, 33, 15, 31, 31, 31, 31, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76,
-		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 06, 33, 33, 15, 31, 31, 20, 33, 33, 33, 33, 33, 33, 33, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
+		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 06, 33, 33, 06, 33, 33, 06, 47, 36, 36, 39, 33, 06, 67, 51, 51, 51, 36, 36, 36, 36, 36, 36, 36, 36, 36, 00,
+		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 05, 31, 07, 33, 33, 06, 33, 33, 06, 45, 42, 42, 46, 33, 15, 31, 31, 31, 31, 76, 76, 76, 76, 76, 76, 76, 76, 76, 22,
+		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 06, 33, 33, 15, 31, 31, 20, 33, 33, 33, 33, 33, 33, 33, 36, 36, 36, 36, 36, 36, 36, 36, 36, 15,
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 33, 33, 33, 06, 33, 33, 33, 33, 33, 06, 33, 33, 33, 33, 33, 33, 33, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 33, 00, 31, 07, 33, 33, 33, 33, 33, 06, 33, 33, 33, 33, 33, 33, 33, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 34, 33, 33, 06, 33, 33, 33, 33, 33, 33, 33, 06, 33, 33, 33, 33, 33, 33, 33, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
@@ -49,9 +49,19 @@ Model::Model() {
 		for (int j = 0; j < mapRows; ++j)
 		{
 			int tileNumber = level[i + j*mapCols];
+			int tmpX = (i - 10)*tileSize.x*(-1);
+			int tmpY = (j - 7)*tileSize.x*(-1);
+			//first checkpoint
+			if (tileNumber == 22) {
+				checkPoint[tmpX+64][tmpY] = true;
+				//std::cout << tmpX << ", " << tmpY << ": " << checkPoint[tmpX][tmpY] << std::endl;
+			}
+			//checkpoints based on tiles
+			if (tileNumber == 15|| tileNumber == 0 || tileNumber == 7 || tileNumber == 20 || tileNumber == 5) {
+				checkPoint[tmpX][tmpY] = true;
+				//std::cout << tmpX << ", " << tmpY << ": " << checkPoint[tmpX][tmpY] << std::endl;
+			}
 			if (tileNumber != 33) {
-				int tmpX = (i - 10)*tileSize.x*(-1);
-				int tmpY = (j - 7)*tileSize.x*(-1);
 				tmpX -= 32;
 				unpassable[tmpX][tmpY] = true;
 				//std::cout << tmpX << ", "<< tmpY<< ": "<<unpassable[tmpX][tmpY]<<std::endl;
@@ -105,8 +115,23 @@ void Model::update(sf::Time delta) {
 	mapState.translate(float(mapX), float(mapY));
 	state.transform = mapState;
 	for (unsigned int i = 0; i < this->enemies.size(); i++) {
+		bool crossedLine = false;
 		this->enemies.at(i).UpdatePos(this->mapX, this->mapY);
-		this->enemies.at(i).update(delta);
+		if (checkPoint[-this->enemies.at(i).getPosition().x+mapX+640][-this->enemies.at(i).getPosition().y+mapY+448]) {
+			if (this->enemies.at(i).checkPointUpdate(1)==0) {
+				//spawns new enemy if there is a current save thats not over
+			}
+			if (this->enemies.at(i).checkPointUpdate(0) == 15) {
+				this->lives -= 1;
+				crossedLine = true;
+			}
+		}
+		if (crossedLine) {
+			//delete enemy here
+		}
+		else {
+			this->enemies.at(i).update(delta);
+		}
 		//std::cout << mapX << ", " << mapY << " Player"<<std::endl;
 	}
 	for (unsigned int i = 0; i < this->towers.size(); i++) {
@@ -234,7 +259,7 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
-					std::cout << mapX << "," << mapY << std::endl;
+					//std::cout << mapX << "," << mapY << std::endl;
 					unpassable[mapX][mapY] = false;
  					return 1;
 				}
@@ -247,7 +272,6 @@ int Model::enterTower(int direc) {
 void Model::addTower(int which, int xx, int yy) {
 	Tower temp(which, xx, yy);
 	this->towers.push_back(temp);
-	std::cout << xx-32 << "," << yy << std::endl;
 	unpassable[-xx-32][yy] = true;
 }
 void Model::addEnemy(int which) {
@@ -258,7 +282,6 @@ void Model::addEnemy(int which) {
 void Model::exitTower(){
 	this->towers.at(this->player.inThisTower).moving = false;
 	unpassable[mapX][mapY] = true;
-	std::cout << mapX << "," << mapY << std::endl;
 	this->player.driving = false;
 	this->player.inThisTower = -1;
 }

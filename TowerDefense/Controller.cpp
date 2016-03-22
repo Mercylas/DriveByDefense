@@ -88,7 +88,7 @@ void Controller::inputs() {
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
 			this->model->addEnemy(1);
-			std::cout << "hey" << std::endl;
+			std::cout << "Enemy Added" << std::endl;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			if (this->ready) {
