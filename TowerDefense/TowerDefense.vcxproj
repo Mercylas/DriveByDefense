@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.cpp" />
+    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -163,6 +165,8 @@
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.hpp" />
+    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.hpp" />
     <ClInclude Include="Controller.hpp" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.hpp" />

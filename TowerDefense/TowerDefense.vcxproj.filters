@@ -42,6 +42,12 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.hpp">
@@ -72,6 +78,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopBox.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\TowerDefense\ShopKeeper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

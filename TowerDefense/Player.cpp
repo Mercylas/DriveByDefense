@@ -2,8 +2,7 @@
 
 Player::Player() {
 	this->frameRate = float(0.6);
-	this->texSheet.loadFromFile("Assets/Assets/player/Character.png"); //32x32
-																	   //stand
+	//stand
 	addFrame(sf::IntRect(0, 2, 64, 64));
 	addFrame(sf::IntRect(64, 2, 64, 64));
 	addFrame(sf::IntRect(128, 2, 64, 64));
@@ -42,7 +41,11 @@ Player::Player() {
 }
 
 Player::~Player() {
-	this->state = 1;
+}
+
+void Player::setTextSheet(sf::Texture * textSheet)
+{
+	this->texSheet = textSheet;
 }
 
 void Player::update(sf::Time delta) {
@@ -88,6 +91,6 @@ void Player::addFrame(sf::IntRect rect) {
 void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();		// apply the transform
-	states.texture = &this->texSheet;		// apply the tileset texture
+	states.texture = this->texSheet;		// apply the tileset texture
 	target.draw(this->vertices, states);	// draw the vertex array
 }

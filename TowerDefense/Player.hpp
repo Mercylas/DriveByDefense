@@ -9,6 +9,7 @@ class Player : public sf::Drawable, public sf::Transformable
 public:
 	Player();
 	~Player();
+	void setTextSheet(sf::Texture *textSheet);
 	int sequenceIndex;
 	int state; //standing=1, walking down=2, walking left =3, walking right=4, walking up=5
 	bool driving;
@@ -24,7 +25,7 @@ private:
 	float frameTime;
 	float frameRate;
 	std::vector<sf::IntRect> playerFrames;
-	sf::Texture texSheet;
+	sf::Texture* texSheet;
 	sf::VertexArray vertices;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };

@@ -5,7 +5,6 @@ Tower::Tower()
 }
 
 Tower::Tower(int which, int xx, int yy) {
-	this->texSheet.loadFromFile("Assets/Assets/towers/Towers.png"); //64x128
 	this->vertices.setPrimitiveType(sf::Quads);
 	this->vertices.resize(4);
 	this->moving = false;
@@ -38,9 +37,14 @@ sf::Vector2f Tower::positionTower() {
 	return quad[0].position;
 }
 
+void Tower::setTowerText(sf::Texture* towerTextSheet)
+{
+	this->texSheet = towerTextSheet;
+}
+
 void Tower::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();		// apply the transform
-	states.texture = &this->texSheet;		// apply the tileset texture
+	states.texture = this->texSheet;		// apply the tileset texture
 	target.draw(this->vertices, states);	// draw the vertex array
 }
