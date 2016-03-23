@@ -2,16 +2,19 @@
 
 
 
-Enemy::Enemy(int type)
+Enemy::Enemy(int t, int l)
 {
 	this->frameRate = float(0.6);
-	this->type = type;
+	this->type = t;
+	this->level = l;
+	this->inventory.gold = 0;
 	this->checkpoint = -1;//spawns on checkpoint -1
 	switch (type) {
 	case 1:
 		this->texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png"); //32x32
-		this->health = 100;
-		this->speed = 1;
+		this->inventory.gold = 10*level;
+		this->health = 100 * level;
+		this->speed = 1*level;
 		break;
 	default:
 		this->texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png"); //32x32

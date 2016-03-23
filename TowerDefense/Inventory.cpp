@@ -80,6 +80,6 @@ std::string Inventory::returnGoldAmount()
 
 std::string Inventory::returnPowerUpAmount()
 {
-	std::string powerCounter = "Power Up: \n\tDamage("+ std::to_string(this->numDamage)+")\n\tRange("+std::to_string(this->numRange)+")\n\tFire Rate("+std::to_string(this->numRate)+")";
+	std::string powerCounter = "Power Ups: \n\tDamage("+ std::to_string(this->numDamage)+")\n\tRange("+std::to_string(this->numRange)+")\n\tFire Rate("+std::to_string(this->numRate)+")";
 	return powerCounter;
 }

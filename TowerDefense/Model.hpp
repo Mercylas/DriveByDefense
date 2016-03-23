@@ -7,6 +7,8 @@
 #include "Enemy.h"
 #include "ShopKeeper.hpp"
 #include "PowerUps.hpp"
+#include "Wave.h"
+
 
 class Model {
 public:
@@ -17,19 +19,24 @@ public:
 	int talking(int direc);
 	int pickUpPower(int direc);
 	int whoTalking;
+	int waveNumber, totalWaves;
+	int enemiesLeft;
 	int enterTower(int direc);
 	void addTower(int which, int xx, int yy);
 	void addTower(int which);
 	void addPowerUp(int which);
 	void addShopKeeper(int which, int xx, int yy, int dir);
-	void addEnemy(int which);
+	void addEnemy(int which, int level);
+	void addWave(int which, int size, int level);
 	void exitTower();
+	void startWave();
 	std::map<int, std::map<int, bool>> unpassable;
 	sf::VertexArray map;
 	sf::RenderStates state;
 	Player player;
 	sf::Texture tileset;
 	std::vector<Tower> towers;
+	std::vector<Wave> waves;
 	std::vector<ShopKeeper> shops;
 	std::vector<Enemy> enemies;
 	std::vector<PowerUps> powerUps;

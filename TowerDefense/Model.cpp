@@ -6,6 +6,8 @@ Model::Model() {
 	mapX = 0;
 	mapY = 0;
 	mapRotation = 0;
+	waveNumber = 0;
+	enemiesLeft = -2;
 	const int level[] =
 	{
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
@@ -38,7 +40,6 @@ Model::Model() {
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
 	};
-
 	mapCols = 60;
 	mapRows = 29;
 	map.setPrimitiveType(sf::Quads);
@@ -53,7 +54,7 @@ Model::Model() {
 			int tmpY = (j - 7)*tileSize.x*(-1);
 			//first checkpoint
 			if (tileNumber == 22) {
-				checkPoint[tmpX+64][tmpY] = true;
+				checkPoint[tmpX+128][tmpY] = true;
 				//std::cout << tmpX << ", " << tmpY << ": " << checkPoint[tmpX][tmpY] << std::endl;
 			}
 			//checkpoints based on tiles
@@ -90,7 +91,7 @@ Model::Model() {
 	mapY = -448;
 	//Adding towers for testing
 	addTower(6, 0, 0);
-	addTower(5, 64*1, 0);
+	addTower(5, 64*1, 64);
 	addTower(4, 64 * 2, 0);
 	addTower(2, 64 * 3, 0);
 	addTower(1, 64 * 4, 0);
@@ -101,6 +102,9 @@ Model::Model() {
 	//shopKeepers
 	addShopKeeper(7, 64 * 5, 64 * 10, 1);
 	addShopKeeper(10, 64 * 7, 64 * 10, 1);
+	//add Waves
+	addWave(1, 20, 1);
+	addWave(1, 20, 2);
 	//lives
 	lives = 100;
 }
@@ -111,7 +115,13 @@ Model::~Model() {
 void Model::update(sf::Time delta) {
 	//check for GameOver
 	if (this->lives < 1) {
+		std::cout << "YOU LOSE" << std::endl;
 		this->gameMode = -1;
+	}
+	//Checks for winner
+	if ((this->waveNumber == this->totalWaves) && (this->enemiesLeft=-2) && enemies.size() == 0) {
+		std::cout << "YOU WIN" << std::endl;
+		this->gameMode = 2;
 	}
 	this->player.update(delta);
 	sf::Transform mapState;
@@ -122,20 +132,28 @@ void Model::update(sf::Time delta) {
 		this->enemies.at(i).UpdatePos(this->mapX, this->mapY);
 		if (checkPoint[-this->enemies.at(i).getPosition().x+mapX+640][-this->enemies.at(i).getPosition().y+mapY+448]) {
 			if (this->enemies.at(i).checkPointUpdate(1)==0) {
-				//spawns new enemy if there is a current save thats not over
+				if (enemiesLeft > -1) {
+					addEnemy(waves.at(waveNumber).enemyType, waves.at(waveNumber).enemyLevel);
+					enemiesLeft -= 1;
+				}
 			}
 			if (this->enemies.at(i).checkPointUpdate(0) == 15) {
-				this->lives -= 1;
 				crossedLine = true;
 			}
 		}
 		if (crossedLine) {
 			//delete enemy here
+			this->lives -= 1;
+			enemies.erase(enemies.begin() + i);
 		}
 		else {
 			this->enemies.at(i).update(delta);
 		}
 		//std::cout << mapX << ", " << mapY << " Player"<<std::endl;
+	}
+	if (enemiesLeft == -1) {
+		enemiesLeft--;
+		waveNumber++;
 	}
 	for (unsigned int i = 0; i < this->towers.size(); i++) {
 		if (this->towers.at(i).moving == false) {
@@ -381,7 +399,7 @@ int Model::enterTower(int direc) {
 void Model::addTower(int which, int xx, int yy) {
 	Tower temp(which, xx, yy);
 	this->towers.push_back(temp);
-	unpassable[-xx-32][yy] = true;
+	unpassable[-xx-32][-yy] = true;
 }
 void Model::addTower(int which)
 {
@@ -402,7 +420,7 @@ void Model::addTower(int which)
 		xx = this->shops.at(1).positionPlayer().x - 64 * 2;
 		yy = this->shops.at(1).positionPlayer().y;
 	}
-	Tower temp(which, int(xx), int(yy));
+	Tower temp(which, xx, yy);
 	this->towers.push_back(temp);
 	unpassable[-xx - 32][-yy] = true;
 }
@@ -436,9 +454,14 @@ void Model::addShopKeeper(int which, int xx, int yy, int dir)
 	this->shops.push_back(temp);
 	unpassable[-xx - 32][-yy] = true;
 }
-void Model::addEnemy(int which) {
-	Enemy temp(which);
+void Model::addEnemy(int which, int level) {
+	Enemy temp(which, level);
 	this->enemies.push_back(temp);
+}
+void Model::addWave(int which, int size, int level) {
+	Wave temp(which, size, level);
+	this->waves.push_back(temp);
+	totalWaves += 1;
 }
 
 void Model::exitTower(){
@@ -446,4 +469,10 @@ void Model::exitTower(){
 	unpassable[mapX][mapY] = true;
 	this->player.driving = false;
 	this->player.inThisTower = -1;
+}
+void Model::startWave() {
+	if (enemiesLeft == -2&&enemies.size()==0) {
+		enemiesLeft = waves.at(waveNumber).size-2;
+		addEnemy(waves.at(waveNumber).enemyType, waves.at(waveNumber).enemyLevel);
+	}
 }

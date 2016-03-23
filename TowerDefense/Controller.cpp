@@ -190,7 +190,7 @@ void Controller::inputs() {
 			break;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
-			this->model->addEnemy(1);
+			this->model->startWave();
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			if (this->ready) {

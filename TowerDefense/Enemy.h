@@ -6,10 +6,11 @@
 class Enemy : public sf::Drawable, public sf::Transformable
 {
 public:
-	Enemy(int);
+	Enemy(int, int);
 	~Enemy();
 	int sequenceIndex;
 	int state; //standing=1, walking down=2, walking left =3, walking right=4, walking up=5
+	int level;
 	void update(sf::Time delta);
 	void setTexCord();
 	void move(int);

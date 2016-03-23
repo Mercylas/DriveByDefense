@@ -51,6 +51,9 @@
     <ClCompile Include="PowerUps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\DriveByDefense\TowerDefense\Wave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.hpp">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PowerUps.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\DriveByDefense\TowerDefense\Wave.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
