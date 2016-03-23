@@ -1,1 +1,8 @@
-﻿
+﻿  View.cpp
+  Model.cpp
+c:\comp2501\drivebydefense\towerdefense\model.cpp(133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(423): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(425): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(448): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  TowerDefense.vcxproj -> C:\Comp2501\DriveByDefense\Debug\TowerDefense.exe

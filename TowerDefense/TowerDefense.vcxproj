@@ -152,7 +152,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\DriveByDefense\TowerDefense\Wave.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -165,9 +164,9 @@
     <ClCompile Include="ShopKeeper.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Programming%27\TowerDefenseDemo\TowerDefense\DriveByDefense\TowerDefense\Wave.h" />
     <ClInclude Include="Controller.hpp" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.hpp" />
@@ -181,6 +180,7 @@
     <ClInclude Include="TileLoader.h" />
     <ClInclude Include="Tower.hpp" />
     <ClInclude Include="View.hpp" />
+    <ClInclude Include="Wave.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

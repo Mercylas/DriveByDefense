@@ -40,7 +40,7 @@ void View::render() {
 	this->window.clear(sf::Color::Black);
 	//put stuff here to draw for example, object->renderable()
 	//go through the tiles and only draw the one we need
-	this->gold.setString("Lives: "+std::to_string(this->model->lives) + "\n" + this->model->player.inventory.returnPowerUpAmount() +"\n"+this->model->player.inventory.returnGoldAmount());
+	this->gold.setString("Lives "+std::to_string(this->model->lives) + "\nWave "+ std::to_string(this->model->waveNumber+1)+"\n"+ this->model->player.inventory.returnPowerUpAmount() +"\n"+this->model->player.inventory.returnGoldAmount());
 	this->window.draw(model->map, model->state);
 	for (unsigned int i = 0; i < this->model->powerUps.size(); i++) {
 		this->window.draw(this->model->powerUps.at(i));
