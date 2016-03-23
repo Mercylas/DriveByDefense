@@ -150,6 +150,10 @@ void Enemy::addFrame(sf::IntRect rect)
 	this->playerFrames.push_back(rect);
 }
 
+sf::Vector2f Enemy::positionEnemy() {
+	sf::Vertex* quad = &this->vertices[0];
+	return quad[0].position;
+}
 void Enemy::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();		// apply the transform
@@ -165,6 +169,12 @@ void Enemy::UpdatePos(int mapX, int mapY) {
 	mapX += 3776 - 32;
 	mapY += 896;
 	this->setPosition(this->posX + mapX, this->posY + mapY);
+}
+
+void Enemy::attacked(int damage, int type)
+{
+	this->health -= damage;
+	std::cout << "HP down to " << this->health << std::endl;
 }
 
 void Enemy::move(int direction) {

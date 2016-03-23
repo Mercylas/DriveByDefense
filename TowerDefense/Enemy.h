@@ -17,7 +17,9 @@ public:
 	void addFrame(sf::IntRect rect);
 	bool isDead();
 	void UpdatePos(int mapX, int mapY);
+	void attacked(int, int);
 	int checkPointUpdate(int);
+	sf::Vector2f positionEnemy();
 	Inventory inventory;
 private:
 	float frameTime;

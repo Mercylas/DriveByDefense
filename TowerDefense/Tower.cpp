@@ -5,7 +5,7 @@ Tower::Tower()
 }
 
 Tower::Tower(int which, int xx, int yy) {
-
+	lastShot = this->clock.restart();
 	if (which == 1) {
 		this->attack = 50;
 		this->addAttack = 20;
@@ -131,6 +131,27 @@ std::string Tower::getTowerStats()
 	return stats;
 }
 
+void Tower::update(sf::Time delta, std::vector<Enemy> &bad)
+{
+	sf::Time target = sf::milliseconds(1000/this->fireRate);
+	lastShot = this->clock.getElapsedTime();
+	//std::cout << target.asMilliseconds() << " < " << lastShot.asMilliseconds() << ", "<< delta.asMilliseconds()<< std::endl;
+	if (target < lastShot) {
+		for (unsigned int i = 0; i < bad.size(); i++) {
+			std::cout << bad.at(i).getPosition().x << ", " << bad.at(i).getPosition().y << " Baddy" << std::endl;
+			std::cout << this->mapX << ", " << this->mapY << " Tower" << std::endl;
+			int dx = bad.at(i).positionEnemy().x - this->mapX;
+			int dy = bad.at(i).positionEnemy().y  - this->mapY;
+			int distance = sqrt(dx * dx + dy * dy);
+			std::cout << distance << " Distance" << std::endl;
+			if (distance < this->range) {
+				bad.at(i).attacked(this->attack, this->type);
+				lastShot = this->clock.restart();
+				break;
+			}
+		}
+	}
+}
 void Tower::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();		// apply the transform

@@ -90,6 +90,7 @@ Model::Model() {
 	mapX = -640;
 	mapY = -448;
 	//Adding towers for testing
+	/*
 	addTower(6, 0, 0);
 	addTower(5, 64*1, 64);
 	addTower(4, 64 * 2, 0);
@@ -99,10 +100,12 @@ Model::Model() {
 	addTower(9, 64 * 6, 0);
 	addTower(10, 64 * 7, 0);
 	addTower(11, 64 * 8, 0);
+	*/
 	//shopKeepers
 	addShopKeeper(7, 64 * 5, 64 * 10, 1);
 	addShopKeeper(10, 64 * 7, 64 * 10, 1);
 	//add Waves
+	addWave(1, 1, 1);
 	addWave(1, 20, 1);
 	addWave(1, 20, 2);
 	//lives
@@ -119,7 +122,7 @@ void Model::update(sf::Time delta) {
 		this->gameMode = -1;
 	}
 	//Checks for winner
-	if ((this->waveNumber == this->totalWaves) && (this->enemiesLeft=-2) && enemies.size() == 0) {
+	if ((this->waveNumber == this->totalWaves) && (this->enemiesLeft=-2) && lives > 0) {
 		std::cout << "YOU WIN" << std::endl;
 		this->gameMode = 2;
 	}
@@ -147,17 +150,23 @@ void Model::update(sf::Time delta) {
 			enemies.erase(enemies.begin() + i);
 		}
 		else {
-			this->enemies.at(i).update(delta);
+			if (this->enemies.at(i).isDead()) {
+				this->player.inventory.gold += this->enemies.at(i).inventory.gold;
+				enemies.erase(enemies.begin() + i);
+			}
+			else {
+				this->enemies.at(i).update(delta);
+			}
 		}
-		//std::cout << mapX << ", " << mapY << " Player"<<std::endl;
 	}
-	if (enemiesLeft == -1) {
+	if (enemiesLeft == -1&&enemies.size()==0) {
 		enemiesLeft--;
 		waveNumber++;
 	}
 	for (unsigned int i = 0; i < this->towers.size(); i++) {
 		if (this->towers.at(i).moving == false) {
 			this->towers.at(i).moveTower(int(this->dispX), int(this->dispY));
+			this->towers.at(i).update(delta, enemies);
 		}
 	}
 	for (unsigned int i = 0; i < this->shops.size(); i++) {
@@ -468,6 +477,8 @@ void Model::addWave(int which, int size, int level) {
 
 void Model::exitTower(){
 	this->towers.at(this->player.inThisTower).moving = false;
+	this->towers.at(this->player.inThisTower).mapX = -mapX;
+	this->towers.at(this->player.inThisTower).mapY = -mapY;
 	unpassable[mapX][mapY] = true;
 	this->player.driving = false;
 	this->player.inThisTower = -1;
