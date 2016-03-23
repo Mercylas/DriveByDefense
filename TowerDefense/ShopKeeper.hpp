@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <string> 
 #include <fstream>
 
 class ShopKeeper : public sf::Drawable, public sf::Transformable
@@ -12,6 +13,7 @@ public:
 	~ShopKeeper();
 	void setTextSheet(sf::Texture *textSheet);
 	void movePlayer(int xx, int yy);
+	std::vector<int> prices;
 	sf::Vector2f positionPlayer();
 	std::string shopMenu;
 	int direction;

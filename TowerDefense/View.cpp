@@ -15,7 +15,7 @@ View::View(Model * m) {
 	}
 	this->fonterino.loadFromFile("Assets/Vecna.otf");
 	this->sell.setCharacterSize(50);
-	this->sell.setPosition(20, 620);
+	this->sell.setPosition(20, 610);
 	this->sell.setColor(sf::Color(0, 0, 0, 255));
 	this->sell.setFont(this->fonterino);
 	this->sell.setString(this->model->shops.at(0).shopMenu);

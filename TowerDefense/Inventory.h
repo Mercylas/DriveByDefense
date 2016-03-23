@@ -9,6 +9,7 @@ public:
 	Inventory();
 	~Inventory();
 	int* gold;
+	bool canAfford(int price);
 	std::vector<int> murse;
 	std::string returnGoldAmount();
 };

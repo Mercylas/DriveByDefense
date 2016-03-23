@@ -1,23 +1,11 @@
-<<<<<<< HEAD
-﻿  View.cpp
-  Inventory.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Player.cpp
-  Model.cpp
-c:\comp2501\drivebydefense\towerdefense\model.cpp(123): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\comp2501\drivebydefense\towerdefense\model.cpp(357): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\comp2501\drivebydefense\towerdefense\model.cpp(357): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
-  Game.cpp
-  Enemy.cpp
-c:\comp2501\drivebydefense\towerdefense\enemy.cpp(164): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Inventory.cpp
   Controller.cpp
   Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  View.cpp
+  Player.cpp
+  Model.cpp
+  Game.cpp
+  Enemy.cpp
   TowerDefense.vcxproj -> C:\Comp2501\DriveByDefense\Debug\TowerDefense.exe
-=======
-﻿  Model.cpp
-z:\programming'\towerdefensedemo\towerdefense\towerdefense\model.cpp(123): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-z:\programming'\towerdefensedemo\towerdefense\towerdefense\model.cpp(357): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  TowerDefense.vcxproj -> Z:\Programming'\TowerDefenseDemo\TowerDefense\Debug\TowerDefense.exe
->>>>>>> origin/master

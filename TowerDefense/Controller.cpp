@@ -30,9 +30,10 @@ void Controller::inputs() {
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
 				if (this->view->talking) {
 					if (this->model->whoTalking) {
-						//towers
-						this->model->addTower(1);
-						this->view->setNewTowerTexture();
+						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(0))) {
+							this->model->addTower(1);
+							this->view->setNewTowerTexture();
+						}
 					}
 					else {
 						//powerups
@@ -43,9 +44,10 @@ void Controller::inputs() {
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
 				if (this->view->talking) {
 					if (this->model->whoTalking) {
-						//towers
-						this->model->addTower(2);
-						this->view->setNewTowerTexture();
+						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(1))) {
+							this->model->addTower(2);
+							this->view->setNewTowerTexture();
+						}
 					}
 					else {
 						//powerups
@@ -56,13 +58,44 @@ void Controller::inputs() {
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
 				if (this->view->talking) {
 					if (this->model->whoTalking) {
-						//towers
-						this->model->addTower(3);
-						this->view->setNewTowerTexture();
+						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(2))) {
+							this->model->addTower(3);
+							this->view->setNewTowerTexture();
+						}
 					}
 					else {
 						//powerups
 						std::cout << "add powerup 3" << std::endl;
+					}
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)) {
+				if (this->view->talking) {
+					if (this->model->whoTalking) {
+						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(3))) {
+							this->model->addTower(4);
+							this->view->setNewTowerTexture();
+						}
+					}
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5)) {
+				if (this->view->talking) {
+					if (this->model->whoTalking) {
+						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(4))) {
+							this->model->addTower(5);
+							this->view->setNewTowerTexture();
+						}
+					}
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6)) {
+				if (this->view->talking) {
+					if (this->model->whoTalking) {
+						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(5))) {
+							this->model->addTower(6);
+							this->view->setNewTowerTexture();
+						}
 					}
 				}
 			}
