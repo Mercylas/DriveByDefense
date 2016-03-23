@@ -354,14 +354,14 @@ void Model::addTower(int which)
 	Tower temp(which, int(xx), int(yy));
 	this->towers.push_back(temp);
 	std::cout << xx << "," << yy << std::endl;
-	unpassable[-xx - 32][yy] = true;
+	unpassable[-xx - 32][-yy] = true;
 }
 void Model::addShopKeeper(int which, int xx, int yy, int dir)
 {
 	ShopKeeper temp(which, xx, yy, dir);
 	this->shops.push_back(temp);
 	std::cout << xx - 32 << "," << yy << std::endl;
-	unpassable[-xx - 32][yy] = true;
+	unpassable[-xx - 32][-yy] = true;
 }
 void Model::addEnemy(int which) {
 	Enemy temp(which);
