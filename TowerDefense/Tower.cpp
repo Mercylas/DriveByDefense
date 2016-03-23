@@ -5,6 +5,64 @@ Tower::Tower()
 }
 
 Tower::Tower(int which, int xx, int yy) {
+
+	if (which == 1) {
+		this->attack = 50;
+		this->addAttack = 20;
+		this->range = 150;
+		this->addRange = 20;
+		this->fireRate = 1;
+		this->addFireRate = 5;
+	}
+	else if (which == 2) {
+		this->attack = 50;
+		this->addAttack = 20;
+		this->range = 150;
+		this->addRange = 20;
+		this->fireRate = 1;
+		this->addFireRate = 5;
+	}
+	else if (which == 3) {
+		this->attack = 50;
+		this->addAttack = 20;
+		this->range = 150;
+		this->addRange = 20;
+		this->fireRate = 1;
+		this->addFireRate = 5;
+	}
+	else if (which == 4) {
+		this->attack = 50;
+		this->addAttack = 20;
+		this->range = 150;
+		this->addRange = 20;
+		this->fireRate = 1;
+		this->addFireRate = 5;
+	}
+	else if (which == 5) {
+		this->attack = 50;
+		this->addAttack = 20;
+		this->range = 150;
+		this->addRange = 20;
+		this->fireRate = 1;
+		this->addFireRate = 5;
+	}
+	else if (which == 6) {
+		this->attack = 50;
+		this->addAttack = 20;
+		this->range = 150;
+		this->addRange = 20;
+		this->fireRate = 1;
+		this->addFireRate = 5;
+	}
+	else {
+		this->attack = 1;
+		this->addAttack = 1;
+		this->range = 50;
+		this->addRange = 1;
+		this->fireRate = 1;
+		this->addFireRate = 1;
+	}
+
 	this->vertices.setPrimitiveType(sf::Quads);
 	this->vertices.resize(4);
 	this->moving = false;
@@ -40,6 +98,37 @@ sf::Vector2f Tower::positionTower() {
 void Tower::setTowerText(sf::Texture* towerTextSheet)
 {
 	this->texSheet = towerTextSheet;
+}
+
+void Tower::powerUpTower(int which){
+	std::cout << this->attack << std::endl;
+	if (which == 1) {
+		this->attack += this->addAttack;
+		this->addAttack -= 5;
+		if (this->addAttack < 5) {
+			this->addAttack = 5;
+		}
+	}
+	else if (which == 2) {
+		this->range += this->addRange;
+		this->addRange -= 5;
+		if (this->addRange < 10) {
+			this->addRange = 10;
+		}
+	}
+	else if (which == 3) {
+		this->fireRate+=this->addFireRate;
+		this->addFireRate -=1;
+		if (this->addFireRate < 1) {
+			this->addFireRate = 1;
+		}
+	}
+}
+
+std::string Tower::getTowerStats()
+{
+	std::string stats = "---Tower Stats---\nDamade["+std::to_string(this->attack)+"]\nRange["+std::to_string(this->range)+"]\nFire Rate["+std::to_string(this->fireRate)+"]";
+	return stats;
 }
 
 void Tower::draw(sf::RenderTarget & target, sf::RenderStates states) const

@@ -145,6 +145,9 @@ void Model::update(sf::Time delta) {
 	for (unsigned int i = 0; i < this->shops.size(); i++) {
 		this->shops.at(i).movePlayer(int(this->dispX), int(this->dispY));
 	}
+	for (unsigned int i = 0; i < this->powerUps.size(); i++) {
+		this->powerUps.at(i).movePower(int(this->dispX), int(this->dispY));
+	}
 	this->dispX = 0;
 	this->dispY = 0;
 }
@@ -235,6 +238,58 @@ int Model::talking(int direc) {
 	return -1;
 }
 
+int Model::pickUpPower(int direc)
+{
+	int diffY, diffX;
+	switch (direc) {
+	case 2:
+		for (unsigned int i = 0; i < this->powerUps.size(); i++) {
+			diffY = int(this->powerUps.at(i).positionPlayer().y - this->player.positionPlayer().y);
+			if (diffY<96 && diffY>63) {
+				diffX = int(this->powerUps.at(i).positionPlayer().x - this->player.positionPlayer().x);
+				if (diffX<32 && diffX>-32) {
+					return i;
+				}
+			}
+		}
+		break;
+	case 3:
+		for (unsigned int i = 0; i < this->powerUps.size(); i++) {
+			diffY = int(this->powerUps.at(i).positionPlayer().y - this->player.positionPlayer().y);
+			if (diffY<32 && diffY>-32) {
+				diffX = int(this->powerUps.at(i).positionPlayer().x - this->player.positionPlayer().x);
+				if (diffX>-96 && diffX<-63) {
+					return i;
+				}
+			}
+		}
+		break;
+	case 4:
+		for (unsigned int i = 0; i < this->powerUps.size(); i++) {
+			diffY = int(this->powerUps.at(i).positionPlayer().y - this->player.positionPlayer().y);
+			if (diffY<32 && diffY>-32) {
+				diffX = int(this->powerUps.at(i).positionPlayer().x - this->player.positionPlayer().x);
+				if (diffX<96 && diffX>63) {
+					return i;
+				}
+			}
+		}
+		break;
+	case 5:
+		for (unsigned int i = 0; i < this->powerUps.size(); i++) {
+			diffY = int(this->powerUps.at(i).positionPlayer().y - this->player.positionPlayer().y);
+			if (diffY>-96 && diffY<-63) {
+				diffX = int(this->powerUps.at(i).positionPlayer().x - this->player.positionPlayer().x);
+				if (diffX<32 && diffX>-32) {
+					return i;
+				}
+			}
+		}
+		break;
+	}
+	return -1;
+}
+
 int Model::enterTower(int direc) {
 	//standing=1, walking down=2, walking left =3, walking right=4, walking up=5
 	//this->model->towers.at(i).positionTower().y + 64 > this->model->winh / 2-32
@@ -286,7 +341,6 @@ int Model::enterTower(int direc) {
 			if (diffY<32 && diffY>-32) {
 				diffX = int(this->towers.at(i).positionTower().x - this->player.positionPlayer().x);
 				if (diffX<96 && diffX>63) {
-					std::cout << "enter right" << std::endl;
 					this->player.driving = true;
 					this->player.inThisTower = i;
 					this->towers.at(i).moving = true;
@@ -295,7 +349,6 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
-					std::cout << mapX << ", " << mapY << std::endl;
 					unpassable[mapX][mapY] = false;
 					return 1;
 				}
@@ -308,7 +361,6 @@ int Model::enterTower(int direc) {
 			if (diffY>-96 && diffY<-63) {
 				diffX = int(this->towers.at(i).positionTower().x - this->player.positionPlayer().x);
 				if (diffX<32 && diffX>-32) {
-					std::cout << "enter up" << std::endl;
 					this->player.driving = true;
 					this->player.inThisTower = i;
 					this->towers.at(i).moving = true;
@@ -317,7 +369,6 @@ int Model::enterTower(int direc) {
 					this->mapY -= diffY;
 					this->dispY -= diffY;
 					this->towers.at(i).moveTower(-diffX, -diffY);
-					//std::cout << mapX << "," << mapY << std::endl;
 					unpassable[mapX][mapY] = false;
  					return 1;
 				}
@@ -353,14 +404,36 @@ void Model::addTower(int which)
 	}
 	Tower temp(which, int(xx), int(yy));
 	this->towers.push_back(temp);
-	std::cout << xx << "," << yy << std::endl;
 	unpassable[-xx - 32][-yy] = true;
 }
+
+void Model::addPowerUp(int which){
+	float xx, yy;
+	if (this->shops.at(0).direction == 1) {
+		xx = this->shops.at(0).positionPlayer().x;
+		yy = this->shops.at(0).positionPlayer().y - 64 * 2;
+	}
+	else if (this->shops.at(0).direction == 2) {
+		xx = this->shops.at(0).positionPlayer().x + 64 * 3;
+		yy = this->shops.at(0).positionPlayer().y;
+	}
+	else if (this->shops.at(0).direction == 3) {
+		xx = this->shops.at(0).positionPlayer().x;
+		yy = this->shops.at(0).positionPlayer().y + 64 * 3;
+	}
+	else {
+		xx = this->shops.at(0).positionPlayer().x - 64 * 2;
+		yy = this->shops.at(0).positionPlayer().y;
+	}
+	PowerUps temp(which, int(xx), int(yy));
+	this->powerUps.push_back(temp);
+	unpassable[-xx - 32][-yy] = true;
+}
+
 void Model::addShopKeeper(int which, int xx, int yy, int dir)
 {
 	ShopKeeper temp(which, xx, yy, dir);
 	this->shops.push_back(temp);
-	std::cout << xx - 32 << "," << yy << std::endl;
 	unpassable[-xx - 32][-yy] = true;
 }
 void Model::addEnemy(int which) {

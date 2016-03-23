@@ -1,11 +1,2 @@
-﻿  Inventory.cpp
-  Controller.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  View.cpp
-  Player.cpp
-  Model.cpp
-  Game.cpp
-  Enemy.cpp
+﻿  Controller.cpp
   TowerDefense.vcxproj -> C:\Comp2501\DriveByDefense\Debug\TowerDefense.exe

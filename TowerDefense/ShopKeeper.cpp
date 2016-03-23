@@ -8,8 +8,9 @@ ShopKeeper::ShopKeeper(int which, int xx, int yy, int dir) {		//7,10
 	if (which == 7) {
 		this->prices.push_back(50);
 		this->prices.push_back(200);
+		this->prices.push_back(200);
 		this->prices.push_back(500);
-		this->shopMenu = "\t\t\t\t\t\t\tPowerUps\n\t\t\t\t\t1) Damage+ ("+std::to_string(this->prices.at(0))+")\n\t\t\t\t\t2) Range+ ("+std::to_string(this->prices.at(1))+")\n\t\t\t\t\t3) HP+ ("+std::to_string(this->prices.at(2))+")";
+		this->shopMenu = "\t\t\t\t\t\t\tPowerUps\n\t\t\t\t\t1) Damage+ ("+std::to_string(this->prices.at(0))+")\n\t\t\t\t\t2) Range+ ("+std::to_string(this->prices.at(1))+")\n\t\t\t\t\t3) Fire Rate+ ("+std::to_string(this->prices.at(2))+")\n\t\t\t\t\t4) HP+ (" + std::to_string(this->prices.at(3)) + ")";
 	}
 	else if (which == 10) {
 		this->shopMenu = "\t\t\t\t\t\t  Tower Shop\n\t1) Tower of Doom\t\t\t2) Tower of The Fallen\n\t3) Towers of Towers\t\t 4) Towers of Redundance\n\t5) Towers of Towers\t\t 6) Towers of Towers";

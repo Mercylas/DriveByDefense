@@ -159,6 +159,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUps.cpp" />
     <ClCompile Include="ShopBox.cpp" />
     <ClCompile Include="ShopKeeper.cpp" />
     <ClCompile Include="Tower.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Model.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="PowerUps.hpp" />
     <ClInclude Include="ShopBox.hpp" />
     <ClInclude Include="ShopKeeper.hpp" />
     <ClInclude Include="StaticTiledMap.h" />

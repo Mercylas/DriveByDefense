@@ -17,6 +17,9 @@ public:
 	bool moving;
 	int type;
 	void setTowerText(sf::Texture* towerTextSheet);
+	void powerUpTower(int which);
+	std::string getTowerStats();
+	int attack, range, fireRate, addAttack, addRange, addFireRate;
 
 private:
 	sf::Texture* texSheet;

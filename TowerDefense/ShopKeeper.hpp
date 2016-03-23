@@ -19,7 +19,6 @@ public:
 	int direction;
 
 private:
-	std::vector<sf::IntRect> playerFrames;
 	sf::Texture* texSheet;
 	sf::VertexArray vertices;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

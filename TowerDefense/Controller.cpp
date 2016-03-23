@@ -28,44 +28,65 @@ void Controller::inputs() {
 				break;
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
-				if (this->view->talking) {
-					if (this->model->whoTalking) {
-						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(0))) {
-							this->model->addTower(1);
-							this->view->setNewTowerTexture();
+				if (this->model->player.driving && this->model->player.inventory.usePower(1)) {
+					this->model->towers.at(this->model->player.inThisTower).powerUpTower(1);
+				}
+				else{
+					if (this->view->talking) {
+						if (this->model->whoTalking) {
+							if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(0))) {
+								this->model->addTower(1);
+								this->view->setNewTowerTexture();
+							}
 						}
-					}
-					else {
-						//powerups
-						std::cout << "add powerup 1" << std::endl;
+						else {
+							if (this->model->player.inventory.canAfford(this->model->shops.at(0).prices.at(0))) {
+								this->model->addPowerUp(1);
+								this->view->setNewPowerUpTexture();
+							}
+						}
 					}
 				}
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
-				if (this->view->talking) {
-					if (this->model->whoTalking) {
-						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(1))) {
-							this->model->addTower(2);
-							this->view->setNewTowerTexture();
+				if (this->model->player.driving && this->model->player.inventory.usePower(2)) {
+					this->model->towers.at(this->model->player.inThisTower).powerUpTower(2);
+				}
+				else{
+					if (this->view->talking) {
+						if (this->model->whoTalking) {
+							if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(1))) {
+								this->model->addTower(2);
+								this->view->setNewTowerTexture();
+							}
 						}
-					}
-					else {
-						//powerups
-						std::cout << "add powerup 2" << std::endl;
+						else {
+							if (this->model->player.inventory.canAfford(this->model->shops.at(0).prices.at(1))) {
+								this->model->addPowerUp(2);
+								this->view->setNewPowerUpTexture();
+							}
+						}
 					}
 				}
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
-				if (this->view->talking) {
-					if (this->model->whoTalking) {
-						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(2))) {
-							this->model->addTower(3);
-							this->view->setNewTowerTexture();
+				if (this->model->player.driving && this->model->player.inventory.usePower(3)) {
+					this->model->towers.at(this->model->player.inThisTower).powerUpTower(3);
+				}
+				else{
+					if (this->view->talking) {
+						if (this->model->whoTalking) {
+							if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(2))) {
+								this->model->addTower(3);
+								this->view->setNewTowerTexture();
+							}
 						}
-					}
-					else {
-						//powerups
-						std::cout << "add powerup 3" << std::endl;
+						else {
+							if (this->model->player.inventory.canAfford(this->model->shops.at(0).prices.at(2))) {
+								this->model->addPowerUp(4);
+								this->view->setNewPowerUpTexture();
+							}
+						}
 					}
 				}
 			}
@@ -75,6 +96,12 @@ void Controller::inputs() {
 						if (this->model->player.inventory.canAfford(this->model->shops.at(1).prices.at(3))) {
 							this->model->addTower(4);
 							this->view->setNewTowerTexture();
+						}
+					}
+					else {
+						if (this->model->player.inventory.canAfford(this->model->shops.at(0).prices.at(3))) {
+							this->model->addPowerUp(3);
+							this->view->setNewPowerUpTexture();
 						}
 					}
 				}
@@ -171,14 +198,37 @@ void Controller::inputs() {
 					this->model->exitTower();
 				}
 				else {
-					int talk = this->model->talking(this->model->player.state);
-					if (talk == -1) {
-						this->model->enterTower(this->model->player.state);
+					int pickUp=this->model->pickUpPower(this->model->player.state);
+					if (pickUp == -1) {
+						int talk = this->model->talking(this->model->player.state);
+						if (talk == -1) {
+							this->model->enterTower(this->model->player.state);
+						}
+						else {
+							this->view->talking = true;
+							this->view->setText(talk);
+							this->model->whoTalking = talk;
+						}
 					}
 					else {
-						this->view->talking = true;
-						this->view->setText(talk);
-						this->model->whoTalking = talk;
+						int valuePower = this->model->powerUps.at(pickUp).value;
+						std::cout << valuePower << std::endl;
+						this->model->powerUps.erase(this->model->powerUps.begin() + pickUp);
+						if (valuePower == -3) {
+							this->model->lives += 50;
+						}
+						else if (valuePower == -4) {
+							this->model->player.inventory.murse.push_back(-3);
+							this->model->player.inventory.numRate++;
+						}
+						else if (valuePower == -2) {
+							this->model->player.inventory.murse.push_back(-2);
+							this->model->player.inventory.numRange++;
+						}
+						else if (valuePower==-1) {
+							this->model->player.inventory.murse.push_back(-1);
+							this->model->player.inventory.numDamage++;
+						}
 					}
 				}
 				this->ready = false;
