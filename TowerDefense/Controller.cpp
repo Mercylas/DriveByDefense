@@ -130,8 +130,8 @@ void Controller::inputs() {
 				this->view->talking = false;
 				if (!model->checkPlayerCollision(0)) {
 					if (this->model->player.driving) {
-						model->mapY += 8;
-						model->dispY += 8;
+						model->mapY += 4;
+						model->dispY += 4;
 					}
 					else {
 						model->mapY += 4;
@@ -144,8 +144,8 @@ void Controller::inputs() {
 				this->view->talking = false;
 				if (!model->checkPlayerCollision(1)) {
 					if (this->model->player.driving) {
-						model->mapY -= 8;
-						model->dispY -= 8;
+						model->mapY -= 4;
+						model->dispY -= 4;
 					}
 					else {
 						model->mapY -= 4;
@@ -158,8 +158,8 @@ void Controller::inputs() {
 				this->view->talking = false;
 				if (!model->checkPlayerCollision(2)) {
 					if (this->model->player.driving) {
-						model->mapX += 8;
-						model->dispX += 8;
+						model->mapX += 4;
+						model->dispX += 4;
 					}
 					else {
 						model->mapX += 4;
@@ -172,8 +172,8 @@ void Controller::inputs() {
 				this->view->talking = false;
 				if (!model->checkPlayerCollision(3)) {
 					if (this->model->player.driving) {
-						model->mapX -= 8;
-						model->dispX -= 8;
+						model->mapX -= 4;
+						model->dispX -= 4;
 					}
 					else {
 						model->mapX -= 4;

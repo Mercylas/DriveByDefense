@@ -420,6 +420,8 @@ void Model::addTower(int which)
 		xx = this->shops.at(1).positionPlayer().x - 64 * 2;
 		yy = this->shops.at(1).positionPlayer().y;
 	}
+	std::cout << shops.at(1).positionPlayer().x << "," << shops.at(1).positionPlayer().y << std::endl;
+	std::cout << xx << "," << yy << std::endl;
 	Tower temp(which, xx, yy);
 	this->towers.push_back(temp);
 	unpassable[-xx - 32][-yy] = true;
