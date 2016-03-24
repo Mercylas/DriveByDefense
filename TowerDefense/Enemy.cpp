@@ -11,13 +11,11 @@ Enemy::Enemy(int t, int l)
 	this->checkpoint = -1;//spawns on checkpoint -1
 	switch (type) {
 	case 1:
-		this->texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png"); //32x32
 		this->inventory.gold = 10*level;
 		this->health = 100 * level;
 		this->speed = 1*level;
 		break;
 	default:
-		this->texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png"); //32x32
 		this->health = 100;
 		this->speed = 1;
 		break;
@@ -157,7 +155,7 @@ sf::Vector2f Enemy::positionEnemy() {
 void Enemy::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();		// apply the transform
-	states.texture = &this->texSheet;		// apply the tileset texture
+	states.texture = this->texSheet;		// apply the tileset texture
 	target.draw(this->vertices, states);	// draw the vertex array
 }
 
@@ -168,7 +166,7 @@ bool Enemy::isDead() {
 void Enemy::UpdatePos(int mapX, int mapY) {
 	mapX += 3776 - 32;
 	mapY += 896;
-	this->setPosition(this->posX + mapX, this->posY + mapY);
+	this->setPosition(float(this->posX + mapX), float(this->posY + mapY));
 }
 
 void Enemy::attacked(int damage, int type)
@@ -198,4 +196,9 @@ void Enemy::move(int direction) {
 int Enemy::checkPointUpdate(int update) {
 	this->checkpoint+=update;
 	return checkpoint;
+}
+
+void Enemy::setTextSheet(sf::Texture * enemyText)
+{
+	this->texSheet = enemyText;
 }

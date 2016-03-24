@@ -6,6 +6,7 @@ View::View(Model * m) {
 	this->loadTowerText();
 	this->loadShopKeepText();
 	this->loadPowerUps();
+	this->loadEnemiesText();
 	this->talking = false;
 	this->model->player.setTextSheet(&this->playerText);
 	for (unsigned int i = 0; i < this->model->towers.size(); i++) {
@@ -88,12 +89,24 @@ void View::loadPowerUps(){
 	this->powerUpsText.loadFromFile("Assets/Assets/towers/powerUps.png");
 }
 
+void View::loadEnemiesText() {
+	sf::Texture texSheet;
+	texSheet.loadFromFile("Assets/Assets/enemies/Enemy1.png");
+	this->enemiesText.push_back(texSheet);
+}
+
 void View::setNewTowerTexture() {
 	this->model->towers.at(this->model->towers.size()-1).setTowerText(&this->towersText);
 }
 
 void View::setNewPowerUpTexture(){
 	this->model->powerUps.at(this->model->powerUps.size() - 1).setTextSheet(&this->powerUpsText);
+}
+
+void View::setNewWaveTextur() {
+	for (int i = 0; i < this->model->enemies.size(); i++) {
+		this->model->enemies.at(i).setTextSheet(&this->enemiesText.at(this->model->enemies.at(i).type - 1));
+	}
 }
 
 void View::setText(int who) {

@@ -12,8 +12,10 @@ public:
 	void loadTowerText();
 	void loadShopKeepText();
 	void loadPowerUps();
+	void loadEnemiesText();
 	void setNewTowerTexture();
 	void setNewPowerUpTexture();
+	void setNewWaveTextur();
 	void setText(int who);
 	sf::Text sell;
 	sf::Text gold;
@@ -23,4 +25,5 @@ public:
 	ShopBox dialogueBox;
 	sf::RenderWindow window;
 	sf::Texture playerText, towersText, shopKeeperText, powerUpsText;
+	std::vector<sf::Texture> enemiesText;
 };

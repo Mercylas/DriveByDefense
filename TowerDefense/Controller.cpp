@@ -191,6 +191,7 @@ void Controller::inputs() {
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
 			this->model->startWave();
+			this->view->setNewWaveTextur();
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			if (this->ready) {

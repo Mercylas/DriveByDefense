@@ -19,15 +19,17 @@ public:
 	void UpdatePos(int mapX, int mapY);
 	void attacked(int, int);
 	int checkPointUpdate(int);
+	void setTextSheet(sf::Texture* enemyText);
 	int  posX, posY;
 	sf::Vector2f positionEnemy();
 	Inventory inventory;
+	int type;
 private:
 	float frameTime;
 	float frameRate;
-	int type, checkpoint, health, speed;
+	int checkpoint, health, speed;
 	std::vector<sf::IntRect> playerFrames;
-	sf::Texture texSheet;
+	sf::Texture* texSheet;
 	sf::VertexArray vertices;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
