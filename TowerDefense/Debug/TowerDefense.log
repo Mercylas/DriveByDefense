@@ -1,1 +1,16 @@
-﻿
+﻿  Controller.cpp
+  Generating Code...
+  Compiling...
+  main.cpp
+  View.cpp
+  Tower.cpp
+c:\comp2501\drivebydefense\towerdefense\tower.cpp(149): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Model.cpp
+c:\comp2501\drivebydefense\towerdefense\model.cpp(141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(179): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\comp2501\drivebydefense\towerdefense\model.cpp(445): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(447): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(470): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+  Generating Code...
+  TowerDefense.vcxproj -> C:\Comp2501\DriveByDefense\Debug\TowerDefense.exe
