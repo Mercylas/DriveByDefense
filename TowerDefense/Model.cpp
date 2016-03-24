@@ -8,6 +8,10 @@ Model::Model() {
 	mapRotation = 0;
 	waveNumber = 0;
 	enemiesLeft = -2;
+	if (!buffer.loadFromFile("Assets/Sounds/towerAttack.wav")){
+		//Error on loading sound
+	}
+	attackSound.setBuffer(buffer);
 	const int level[] =
 	{
 		36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36,
@@ -101,6 +105,7 @@ Model::Model() {
 	addTower(10, 64 * 7, 0);
 	addTower(11, 64 * 8, 0);
 	*/
+	addTower(1, 2528-32, 512);
 	//shopKeepers
 	addShopKeeper(7, 64 * 5, 64 * 10, 1);
 	addShopKeeper(10, 64 * 7, 64 * 10, 1);
@@ -166,7 +171,13 @@ void Model::update(sf::Time delta) {
 	for (unsigned int i = 0; i < this->towers.size(); i++) {
 		if (this->towers.at(i).moving == false) {
 			this->towers.at(i).moveTower(int(this->dispX), int(this->dispY));
-			this->towers.at(i).update(delta, enemies);
+			if (this->towers.at(i).update(delta, enemies)) {
+				switch (this->towers.at(i).type) {
+					default:
+					attackSound.play();
+					break;
+				}
+			}
 		}
 	}
 	for (unsigned int i = 0; i < this->shops.size(); i++) {

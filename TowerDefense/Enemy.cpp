@@ -174,7 +174,7 @@ void Enemy::UpdatePos(int mapX, int mapY) {
 void Enemy::attacked(int damage, int type)
 {
 	this->health -= damage;
-	std::cout << "HP down to " << this->health << std::endl;
+	//std::cout << "HP down to " << this->health << std::endl;
 }
 
 void Enemy::move(int direction) {

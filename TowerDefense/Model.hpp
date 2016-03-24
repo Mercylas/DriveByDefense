@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include "Player.hpp"
 #include "Tower.hpp"
@@ -10,10 +11,13 @@
 #include "Wave.h"
 
 
+
 class Model {
 public:
 	Model();
 	~Model();
+	sf::SoundBuffer buffer;
+	sf::Sound attackSound;
 	void update(sf::Time);
 	bool checkPlayerCollision(int);
 	int talking(int direc);

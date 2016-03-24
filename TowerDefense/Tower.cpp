@@ -6,6 +6,8 @@ Tower::Tower()
 
 Tower::Tower(int which, int xx, int yy) {
 	lastShot = this->clock.restart();
+	mapX = xx;
+	mapY = yy;
 	if (which == 1) {
 		this->attack = 50;
 		this->addAttack = 20;
@@ -131,26 +133,31 @@ std::string Tower::getTowerStats()
 	return stats;
 }
 
-void Tower::update(sf::Time delta, std::vector<Enemy> &bad)
+bool Tower::update(sf::Time delta, std::vector<Enemy> &bad)
 {
 	sf::Time target = sf::milliseconds(1000/this->fireRate);
 	lastShot = this->clock.getElapsedTime();
 	//std::cout << target.asMilliseconds() << " < " << lastShot.asMilliseconds() << ", "<< delta.asMilliseconds()<< std::endl;
 	if (target < lastShot) {
 		for (unsigned int i = 0; i < bad.size(); i++) {
-			std::cout << bad.at(i).getPosition().x << ", " << bad.at(i).getPosition().y << " Baddy" << std::endl;
-			std::cout << this->mapX << ", " << this->mapY << " Tower" << std::endl;
-			int dx = bad.at(i).positionEnemy().x - this->mapX;
-			int dy = bad.at(i).positionEnemy().y  - this->mapY;
-			int distance = sqrt(dx * dx + dy * dy);
-			std::cout << distance << " Distance" << std::endl;
+			//std::cout << 2496 - (64 * 7)-bad.at(i).posX << ", " << 512 - 64-bad.at(i).posY << " Baddy" << std::endl;
+			//std::cout << this->mapX << ", " << this->mapY << " Tower" << std::endl;
+			int dx = (2496 - (64 * 7) - bad.at(i).posX) - this->mapX;
+			int dy = (512 - 64 - bad.at(i).posY) - this->mapY;
+			dx *= dx;
+			dy *= dy;
+			int distance = sqrt(dx + dy);
+			//std::cout << dx << " X" << std::endl;
+			//std::cout << dy << " Y" << std::endl;
+			//std::cout << distance << " Distance" << std::endl;
 			if (distance < this->range) {
 				bad.at(i).attacked(this->attack, this->type);
 				lastShot = this->clock.restart();
-				break;
+				return true;
 			}
 		}
 	}
+	return false;
 }
 void Tower::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {

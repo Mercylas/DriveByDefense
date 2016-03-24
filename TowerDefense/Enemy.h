@@ -19,12 +19,13 @@ public:
 	void UpdatePos(int mapX, int mapY);
 	void attacked(int, int);
 	int checkPointUpdate(int);
+	int  posX, posY;
 	sf::Vector2f positionEnemy();
 	Inventory inventory;
 private:
 	float frameTime;
 	float frameRate;
-	int type, checkpoint, health, posX, posY, speed;
+	int type, checkpoint, health, speed;
 	std::vector<sf::IntRect> playerFrames;
 	sf::Texture texSheet;
 	sf::VertexArray vertices;

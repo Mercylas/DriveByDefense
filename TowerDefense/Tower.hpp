@@ -4,6 +4,7 @@
 #include <fstream>
 #include "Enemy.h""
 #include <cmath>
+
 class Tower : public sf::Drawable, public sf::Transformable
 {
 
@@ -23,7 +24,7 @@ public:
 	void powerUpTower(int which);
 	std::string getTowerStats();
 	int attack, range, fireRate, addAttack, addRange, addFireRate, mapX, mapY;
-	void update(sf::Time delta, std::vector<Enemy>& bad);
+	bool update(sf::Time delta, std::vector<Enemy>& bad);
 private:
 	sf::Texture* texSheet;
 	sf::VertexArray vertices;
