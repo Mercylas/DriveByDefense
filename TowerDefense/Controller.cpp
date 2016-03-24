@@ -195,6 +195,7 @@ void Controller::inputs() {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			if (this->ready) {
 				if (this->model->player.driving) {
+					//std::cout << this->model->mapX << ", " << this->model->mapY << std::endl;
 					this->model->exitTower();
 				}
 				else {
@@ -212,7 +213,7 @@ void Controller::inputs() {
 					}
 					else {
 						int valuePower = this->model->powerUps.at(pickUp).value;
-						std::cout << valuePower << std::endl;
+						//std::cout << valuePower << std::endl;
 						this->model->powerUps.erase(this->model->powerUps.begin() + pickUp);
 						if (valuePower == -3) {
 							this->model->lives += 50;
