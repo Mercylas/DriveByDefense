@@ -5,13 +5,13 @@ Tower::Tower()
 }
 
 Tower::Tower(int which, int xx, int yy) {
-	lastShot = this->clock.restart();
 	mapX = xx;
 	mapY = yy;
+	lastShot = this->clock.restart();
 	if (which == 1) {
 		this->attack = 50;
 		this->addAttack = 20;
-		this->range = 150;
+		this->range = 100;
 		this->addRange = 20;
 		this->fireRate = 1;
 		this->addFireRate = 5;
@@ -149,7 +149,7 @@ bool Tower::update(sf::Time delta, std::vector<Enemy> &bad)
 			int distance = sqrt(dx + dy);
 			//std::cout << dx << " X" << std::endl;
 			//std::cout << dy << " Y" << std::endl;
-			//std::cout << distance << " Distance" << std::endl;
+			std::cout << distance << " Distance" << std::endl;
 			if (distance < this->range) {
 				bad.at(i).attacked(this->attack, this->type);
 				lastShot = this->clock.restart();

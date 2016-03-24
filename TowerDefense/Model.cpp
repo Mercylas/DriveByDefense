@@ -440,11 +440,11 @@ void Model::addTower(int which)
 		xx = this->shops.at(1).positionPlayer().x - 64 * 2;
 		yy = this->shops.at(1).positionPlayer().y;
 	}
-	std::cout << shops.at(1).positionPlayer().x << "," << shops.at(1).positionPlayer().y << std::endl;
-	std::cout << xx << "," << yy << std::endl;
+	//std::cout << shops.at(1).positionPlayer().x << "," << shops.at(1).positionPlayer().y << std::endl;
+	//std::cout << xx << "," << yy << std::endl;
 	Tower temp(which, xx, yy);
 	this->towers.push_back(temp);
-	unpassable[-xx - 32][-yy] = true;
+	unpassable[-476][-512] = true;
 }
 
 void Model::addPowerUp(int which){
@@ -467,7 +467,7 @@ void Model::addPowerUp(int which){
 	}
 	PowerUps temp(which, int(xx), int(yy));
 	this->powerUps.push_back(temp);
-	unpassable[-xx - 32][-yy] = true;
+	unpassable[-476+128][-512] = true;
 }
 
 void Model::addShopKeeper(int which, int xx, int yy, int dir)
