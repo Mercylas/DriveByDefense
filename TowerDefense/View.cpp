@@ -32,6 +32,12 @@ View::View(Model * m) {
 	this->towerInfo.setPosition(10, 300);
 	this->towerInfo.setColor(sf::Color(0, 0, 0, 150));
 	this->towerInfo.setFont(this->fonterino);
+	this->rangeOfTower.setRadius(10);
+	this->rangeOfTower.setOutlineThickness(7);
+	this->rangeOfTower.setOutlineColor(sf::Color(186, 14, 15, 150));
+	this->rangeOfTower.setFillColor(sf::Color(255, 10, 10, 100));
+	this->rangeOfTower.setPosition(float(this->model->winw/2), float(this->model->winh/2));
+	
 }
 
 View::~View() {
@@ -60,6 +66,9 @@ void View::render() {
 	}
 	else {
 		this->towerInfo.setString(this->model->towers.at(this->model->player.inThisTower).getTowerStats());
+		this->rangeOfTower.setRadius(float(this->model->towers.at(this->model->player.inThisTower).range));
+		this->rangeOfTower.setPosition(float(this->model->winw / 2 - this->rangeOfTower.getRadius()), float(this->model->winh / 2 - this->rangeOfTower.getRadius()));
+		this->window.draw(this->rangeOfTower);
 		this->window.draw(this->towerInfo);
 	}
 	if (this->talking) {
@@ -104,7 +113,7 @@ void View::setNewPowerUpTexture(){
 }
 
 void View::setNewWaveTextur() {
-	for (int i = 0; i < this->model->enemies.size(); i++) {
+	for (unsigned int i = 0; i < this->model->enemies.size(); i++) {
 		this->model->enemies.at(i).setTextSheet(&this->enemiesText.at(this->model->enemies.at(i).type - 1));
 	}
 }

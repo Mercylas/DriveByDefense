@@ -21,6 +21,7 @@ public:
 	sf::Text gold;
 	sf::Text towerInfo;
 	sf::Font fonterino;
+	sf::CircleShape rangeOfTower;
 	Model* model;
 	ShopBox dialogueBox;
 	sf::RenderWindow window;
