@@ -44,6 +44,9 @@ View::~View() {
 }
 
 void View::render() {
+	if (this->model->newEnemyAdd == true) {
+		setNewWaveTextur();
+	}
 	this->window.clear(sf::Color::Black);
 	//put stuff here to draw for example, object->renderable()
 	//go through the tiles and only draw the one we need
@@ -116,6 +119,7 @@ void View::setNewWaveTextur() {
 	for (unsigned int i = 0; i < this->model->enemies.size(); i++) {
 		this->model->enemies.at(i).setTextSheet(&this->enemiesText.at(this->model->enemies.at(i).type - 1));
 	}
+	this->model->newEnemyAdd = false;
 }
 
 void View::setText(int who) {

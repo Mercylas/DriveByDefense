@@ -39,6 +39,7 @@ Enemy::Enemy(int t, int l)
 	this->state = 2;
 	this->sequenceIndex = 0;
 	this->frameTime = 0;
+	this->texSheet = 0;
 	this->vertices.setPrimitiveType(sf::Quads);
 	this->vertices.resize(4);
 	sf::Vertex* quad = &this->vertices[0];
@@ -151,6 +152,15 @@ void Enemy::addFrame(sf::IntRect rect)
 sf::Vector2f Enemy::positionEnemy() {
 	sf::Vertex* quad = &this->vertices[0];
 	return quad[0].position;
+}
+bool Enemy::texSet()
+{
+	if (this->texSheet == 0) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 void Enemy::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {

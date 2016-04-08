@@ -1,2 +1,6 @@
-﻿  View.cpp
+﻿  Model.cpp
+c:\comp2501\drivebydefense\towerdefense\model.cpp(142): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(180): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\comp2501\drivebydefense\towerdefense\model.cpp(447): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\comp2501\drivebydefense\towerdefense\model.cpp(507): warning C4018: '<': signed/unsigned mismatch
   TowerDefense.vcxproj -> C:\Comp2501\DriveByDefense\Debug\TowerDefense.exe

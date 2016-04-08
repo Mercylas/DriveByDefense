@@ -11,6 +11,7 @@ Model::Model() {
 	if (!buffer.loadFromFile("Assets/Sounds/towerAttack.wav")){
 		//Error on loading sound
 	}
+	this->newEnemyAdd = false;
 	attackSound.setBuffer(buffer);
 	const int level[] =
 	{
@@ -188,6 +189,7 @@ void Model::update(sf::Time delta) {
 	}
 	this->dispX = 0;
 	this->dispY = 0;
+	monsterNeedTex();
 }
 
 bool Model::checkPlayerCollision(int direction) {
@@ -336,9 +338,9 @@ int Model::enterTower(int direc) {
 	case 2:
 		for (unsigned int i = 0; i < this->towers.size(); i++) {
 			diffY = int(this->towers.at(i).positionTower().y - this->player.positionPlayer().y);
-			if (diffY<96 && diffY>63) {
+			if (diffY<97 && diffY>62) {
 				diffX= int(this->towers.at(i).positionTower().x - this->player.positionPlayer().x);
-				if (diffX<32 && diffX>-32) {
+				if (diffX<33 && diffX>-33) {
 					this->player.driving = true;
 					this->player.inThisTower = i;
 					this->towers.at(i).moving = true;
@@ -356,9 +358,9 @@ int Model::enterTower(int direc) {
 	case 3:
 		for (unsigned int i = 0; i < this->towers.size(); i++) {
 			diffY = int(this->towers.at(i).positionTower().y - this->player.positionPlayer().y);
-			if (diffY<32 && diffY>-32) {
+			if (diffY<33 && diffY>-33) {
 				diffX = int(this->towers.at(i).positionTower().x - this->player.positionPlayer().x);
-				if (diffX>-96 && diffX<-63) {
+				if (diffX>-97 && diffX<-62) {
 					this->player.driving = true;
 					this->player.inThisTower = i;
 					this->towers.at(i).moving = true;
@@ -376,9 +378,9 @@ int Model::enterTower(int direc) {
 	case 4:
 		for (unsigned int i = 0; i < this->towers.size(); i++) {
 			diffY = int(this->towers.at(i).positionTower().y - this->player.positionPlayer().y);
-			if (diffY<32 && diffY>-32) {
+			if (diffY<33 && diffY>-33) {
 				diffX = int(this->towers.at(i).positionTower().x - this->player.positionPlayer().x);
-				if (diffX<96 && diffX>63) {
+				if (diffX<97 && diffX>62) {
 					this->player.driving = true;
 					this->player.inThisTower = i;
 					this->towers.at(i).moving = true;
@@ -396,9 +398,9 @@ int Model::enterTower(int direc) {
 	case 5:
 		for (unsigned int i = 0; i < this->towers.size(); i++) {
 			diffY = int(this->towers.at(i).positionTower().y - this->player.positionPlayer().y);
-			if (diffY>-96 && diffY<-63) {
+			if (diffY>-97 && diffY<-62) {
 				diffX = int(this->towers.at(i).positionTower().x - this->player.positionPlayer().x);
-				if (diffX<32 && diffX>-32) {
+				if (diffX<33 && diffX>-33) {
 					this->player.driving = true;
 					this->player.inThisTower = i;
 					this->towers.at(i).moving = true;
@@ -498,5 +500,14 @@ void Model::startWave() {
 	if (enemiesLeft == -2&&enemies.size()==0) {
 		enemiesLeft = waves.at(waveNumber).size-2;
 		addEnemy(waves.at(waveNumber).enemyType, waves.at(waveNumber).enemyLevel);
+	}
+}
+
+void Model::monsterNeedTex() {
+	for (int i = 0; i < this->enemies.size(); i++) {
+		if (this->enemies.at(i).texSet() != true) {
+			this->newEnemyAdd = true;
+			break;
+		}
 	}
 }

@@ -34,6 +34,7 @@ public:
 	void addWave(int which, int size, int level);
 	void exitTower();
 	void startWave();
+	void monsterNeedTex();
 	std::map<int, std::map<int, bool>> unpassable;
 	sf::VertexArray map;
 	sf::RenderStates state;
@@ -44,6 +45,7 @@ public:
 	std::vector<ShopKeeper> shops;
 	std::vector<Enemy> enemies;
 	std::vector<PowerUps> powerUps;
+	bool newEnemyAdd;
 	int winh, winw, gameMode, mapRows, mapCols, lives, mapX, mapY;
 	std::map<int, std::map<int, bool>> checkPoint;
 	float mapRotation, dispX, dispY;

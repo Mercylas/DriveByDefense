@@ -24,6 +24,7 @@ public:
 	sf::Vector2f positionEnemy();
 	Inventory inventory;
 	int type;
+	bool texSet();
 private:
 	float frameTime;
 	float frameRate;
